@@ -10,12 +10,19 @@
 <body>
     <div class="shell">
         <aside class="sidebar">
-            <div class="brand-name">Study<span>Hub</span></div>
-            <button class="snbtn on" onclick="goPage('dash')">Dashboard</button>
+            <div class="brand">
+                <div class="brand-name">Study<span>Hub</span></div>
+            </div>
+            <div class="sidenav">
+                <div class="snlabel">Overview</div>
+                <button class="snbtn on" id="nav-dash" onclick="goPage('dash')">
+                    <div class="snicon">◈</div>Dashboard
+                </button>
+            </div>
         </aside>
 
         <main class="main">
-            <!-- Dashboard/Chapter Selection View -->
+            <!-- View 1: Subject and Chapter Grids -->
             <div class="page on" id="page-dash">
                 <div class="ph">
                     <h1 class="ph-title">Your progress</h1>
@@ -24,7 +31,7 @@
                 <div class="tgrid" id="topics-grid"></div>
             </div>
 
-            <!-- Detailed Notes View -->
+            <!-- View 2: Note Blocks View -->
             <div class="page" id="page-topic">
                 <button class="backbtn" onclick="openChapterGrid(curTopic)">← Back to Chapters</button>
                 <h1 id="t-title">Chapter Title</h1>
