@@ -1,44 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CFA Level II Study Hub</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class="shell">
-        <aside class="sidebar">
-            <div class="brand">
-                <div class="brand-name">Study<span>Hub</span></div>
-            </div>
-            <div class="sidenav">
-                <div class="snlabel">Overview</div>
-                <button class="snbtn on" id="nav-dash" onclick="buildSubjectDashboard()">
-                    <div class="snicon">◈</div>Dashboard
-                </button>
-            </div>
-        </aside>
-
-        <main class="main">
-            <!-- Subject/Chapter Grid View -->
-            <div class="page on" id="page-dash">
-                <div class="ph">
-                    <h1 class="ph-title">Your progress</h1>
-                    <p class="ph-sub">CFA Level II · 10 topics</p>
-                </div>
-                <div class="tgrid" id="topics-grid"></div>
-            </div>
-
-            <!-- Notes Viewer View -->
-            <div class="page" id="page-topic">
-                <div id="topic-header"></div> <!-- Target for dynamic back button -->
-                <h1 id="t-title" style="margin-bottom: 30px;">Chapter Notes</h1>
-                <div id="tab-body"></div>
-            </div>
-        </main>
+<main class="main">
+    <!-- Dashboard View -->
+    <div class="page on" id="page-dash">
+        <div class="ph">
+            <h1 class="ph-title">Your progress</h1>
+            <p class="ph-sub">CFA Level II · 10 topics</p>
+        </div>
+        <div class="tgrid" id="topics-grid"></div>
     </div>
-    <script src="script.js"></script>
-</body>
-</html>
+
+    <!-- Notes View (Stays hidden until clicked) -->
+    <div class="page" id="page-topic">
+        <button class="backbtn" onclick="buildSubjectDashboard()">← Back to Subjects</button>
+        <h1 id="t-title" style="margin-bottom: 20px;"></h1>
+        <div id="tab-body"></div>
+    </div>
+</main>
