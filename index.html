@@ -15,14 +15,14 @@
             </div>
             <div class="sidenav">
                 <div class="snlabel">Overview</div>
-                <button class="snbtn on" id="nav-dash" onclick="goPage('dash')">
+                <button class="snbtn on" id="nav-dash" onclick="buildSubjectDashboard()">
                     <div class="snicon">◈</div>Dashboard
                 </button>
             </div>
         </aside>
 
         <main class="main">
-            <!-- View 1: Subject and Chapter Grids -->
+            <!-- Subject/Chapter Grid View -->
             <div class="page on" id="page-dash">
                 <div class="ph">
                     <h1 class="ph-title">Your progress</h1>
@@ -31,10 +31,10 @@
                 <div class="tgrid" id="topics-grid"></div>
             </div>
 
-            <!-- View 2: Note Blocks View -->
+            <!-- Notes Viewer View -->
             <div class="page" id="page-topic">
-                <button class="backbtn" onclick="openChapterGrid(curTopic)">← Back to Chapters</button>
-                <h1 id="t-title">Chapter Title</h1>
+                <div id="topic-header"></div> <!-- Target for dynamic back button -->
+                <h1 id="t-title" style="margin-bottom: 30px;">Chapter Notes</h1>
                 <div id="tab-body"></div>
             </div>
         </main>
