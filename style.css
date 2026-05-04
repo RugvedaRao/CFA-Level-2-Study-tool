@@ -1,3 +1,7 @@
+/* NUCLEAR TEST: If this works, your background will turn bright red */
+body {
+    background-color: red !important;
+}
 :root {
     --color-background-primary: #ffffff;
     --color-background-secondary: #f8f9fa;
