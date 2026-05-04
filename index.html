@@ -4,11 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CFA Level II Study Hub</title>
-    <!-- Ensure this filename matches your .css file exactly -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h2 class="sr-only">CFA Level 2 complete study hub with dashboard, topic notes (premium), and free chapter quizzes</h2>
+    <h2 class="sr-only">CFA Level 2 complete study hub with dashboard, topic notes, and free chapter quizzes</h2>
 
     <div class="shell">
         <aside class="sidebar">
@@ -24,33 +23,26 @@
                 <div class="snlabel" style="margin-top:6px">Topics</div>
                 <div id="sidenav-topics"></div>
             </div>
-            <div class="upgrade-box">
-                <div class="ub-title">Unlock all notes</div>
-                <div class="ub-sub">Premium notes, formulas & concept maps for all 10 topics.</div>
-                <button class="ub-btn">Upgrade to Pro ↗</button>
-            </div>
+            <!-- Removed Upgrade Box from here -->
         </aside>
 
         <main class="main">
-            <!-- Dashboard Page -->
             <div class="page on" id="page-dash">
                 <div class="ph">
                     <div>
                         <div class="ph-title">Your progress</div>
-                        <div class="ph-sub">CFA Level II · 10 topics · 50 free quiz questions</div>
+                        <div class="ph-sub">CFA Level II · 10 topics · 50 quiz questions</div>
                     </div>
                     <button class="plan-btn">Get study plan ↗</button>
                 </div>
-                <div class="stats4">
+                <div class="stats3"> <!-- Changed from stats4 to stats3 -->
                     <div class="scard"><div class="snum" id="st-acc">0<sup>%</sup></div><div class="slbl">Quiz accuracy</div><div class="sbar"><div class="sbarf" id="sb-acc" style="width:0%"></div></div></div>
                     <div class="scard"><div class="snum" id="st-done">0<sup>/10</sup></div><div class="slbl">Topics attempted</div><div class="sbar"><div class="sbarf" id="sb-done" style="width:0%"></div></div></div>
                     <div class="scard"><div class="snum" id="st-q">0<sup>/50</sup></div><div class="slbl">Questions answered</div><div class="sbar"><div class="sbarf" id="sb-q" style="width:0%"></div></div></div>
-                    <div class="scard"><div class="snum" style="font-size:16px;color:#999">Pro only</div><div class="slbl">Notes unlocked</div><div class="sbar"><div class="sbarf" style="width:0%;background:#EF9F27"></div></div></div>
                 </div>
                 <div class="tgrid" id="topics-grid"></div>
             </div>
 
-            <!-- Topic Detail Page -->
             <div class="page" id="page-topic">
                 <div class="dh">
                     <button class="backbtn" onclick="goPage('dash',document.getElementById('nav-dash'))">← back</button>
@@ -58,14 +50,13 @@
                 </div>
                 <div class="ctabs">
                     <button class="ctab" id="ctab-notes" onclick="switchTab('notes')">Notes</button>
-                    <button class="ctab on" id="ctab-quiz" onclick="switchTab('quiz')">Free quiz</button>
+                    <button class="ctab on" id="ctab-quiz" onclick="switchTab('quiz')">Quiz</button>
                 </div>
                 <div id="tab-body"></div>
             </div>
         </main>
     </div>
 
-    <!-- Ensure this filename matches your .js file exactly -->
     <script src="script.js"></script>
 </body>
 </html>
