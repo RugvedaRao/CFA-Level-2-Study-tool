@@ -14,89 +14,101 @@ const T = [
       { id: 'pen', name: 'Employee Compensation' }
     ]
   }
-  // Add all 10 subjects here with their respective chapter IDs
+  // Add remaining 8 subjects here...
 ];
 
-let scores = {};
 let curTopic = null;
 
+/**
+ * Renders the initial 10-subject dashboard
+ */
 function buildSubjectDashboard() {
   const grid = document.getElementById('topics-grid');
   grid.innerHTML = '';
-  document.getElementById('page-dash').classList.add('on');
-  document.getElementById('page-topic').classList.remove('on');
+  goPage('dash');
   
-  // Reset Titles
   document.querySelector('.ph-title').textContent = 'Your progress';
   document.querySelector('.ph-sub').textContent = 'CFA Level II · 10 topics';
 
   T.forEach(t => {
     const card = document.createElement('div');
     card.className = 'tcard';
-    card.style.borderTop = `2px solid ${t.col}40`;
     card.innerHTML = `
-      <div class="tcard-top">
-        <div class="tico" style="background:${t.bg}">${t.ico}</div>
-        <div><div class="tname">${t.name}</div><div class="tsub">${t.sub}</div></div>
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:15px;">
+        <div style="font-size:24px; background:${t.bg}; padding:10px; border-radius:8px;">${t.ico}</div>
+        <div><div style="font-weight:700;">${t.name}</div><div style="font-size:12px; color:#64748b;">${t.sub}</div></div>
       </div>
-      <div class="tacts">
-        <button class="pill g" onclick="openChapterGrid('${t.id}')">View Chapters</button>
-      </div>`;
+      <button class="pill g" onclick="openChapterGrid('${t.id}')">View Chapters</button>`;
     grid.appendChild(card);
   });
 }
 
+/**
+ * Renders the chapter selection for a specific subject
+ */
 function openChapterGrid(subjectId) {
   const t = T.find(x => x.id === subjectId);
   curTopic = subjectId;
   const grid = document.getElementById('topics-grid');
   grid.innerHTML = '';
+  goPage('dash');
 
   document.querySelector('.ph-title').textContent = t.name;
-  document.querySelector('.ph-sub').textContent = 'Select a chapter to view notes';
+  document.querySelector('.ph-sub').textContent = 'Select a chapter to read notes';
 
   t.chapters.forEach(ch => {
     const card = document.createElement('div');
     card.className = 'tcard chapter-card';
-    card.innerHTML = `
-      <div class="tname">${ch.name}</div>
-      <div class="tsub">Click to read blocks</div>`;
+    card.innerHTML = `<div style="font-weight:700;">${ch.name}</div><div style="font-size:12px; color:#64748b; margin-top:4px;">Click to view notes</div>`;
     card.onclick = () => renderNoteBlocks(subjectId, ch.id, ch.name);
     grid.appendChild(card);
   });
 
-  // Add a "Back to Subjects" button
   const back = document.createElement('button');
-  back.className = 'pill';
+  back.className = 'backbtn';
+  back.style.marginTop = '20px';
   back.textContent = '← Back to Subjects';
   back.onclick = buildSubjectDashboard;
-  grid.appendChild(back);
+  grid.parentElement.insertBefore(back, grid); // Place before the grid
 }
 
+/**
+ * Fetches and displays Markdown note blocks
+ */
 async function renderNoteBlocks(subjectId, chapterId, chapterName) {
-  document.getElementById('page-dash').classList.remove('on');
-  document.getElementById('page-topic').classList.add('on');
+  goPage('topic');
   document.getElementById('t-title').textContent = chapterName;
+  const body = document.getElementById('tab-body');
+  body.innerHTML = "Loading notes...";
   
   try {
-    const response = await fetch(`./notes/${subjectId}/${chapterId}.md`);
+    const response = await fetch(`notes/${subjectId}/${chapterId}.md`);
     if (!response.ok) throw new Error();
     const markdown = await response.text();
     
-    // Split by '---' in your markdown file to create separate blocks
-    const blocks = markdown.split('---');
+    // Split by three dashes on a new line to create blocks
+    const blocks = markdown.split(/\n---\n/);
     
-    document.getElementById('tab-body').innerHTML = blocks.map(block => `
+    body.innerHTML = blocks.map(block => `
       <div class="note-block">${block.trim()}</div>
     `).join('');
   } catch (err) {
-    document.getElementById('tab-body').innerHTML = "<div class="note-block">Notes for this chapter are currently being updated.</div>";
+    body.innerHTML = `<div class="note-block">Notes for <strong>${chapterName}</strong> are currently being updated in <code>notes/${subjectId}/${chapterId}.md</code>.</div>`;
   }
 }
 
+/**
+ * Standard page transition logic
+ */
 function goPage(id) {
-    if(id === 'dash') buildSubjectDashboard();
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('on'));
+    const target = document.getElementById('page-' + id);
+    if(target) target.classList.add('on');
+    
+    // Clean up extra back buttons when moving
+    const extraBack = document.querySelector('.main > .backbtn');
+    if (extraBack && id !== 'dash') extraBack.remove();
 }
 
-// Start app
+// Initialize
 buildSubjectDashboard();
