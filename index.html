@@ -11,10 +11,10 @@
     <div class="shell">
         <!-- Sidebar Navigation -->
         <aside class="sidebar">
-            <div class="brand-name" style="margin-top: 10px;">Study<span>Hub</span></div>
-            <div class="sidenav" style="margin-top: 20px;">
-                <div class="snlabel" style="font-size: 11px; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 0.5px;">Overview</div>
-                <button class="snbtn on" style="width: 100%; display: flex; align-items: center; gap: 10px; padding: 12px; border-radius: 8px; border: 1px solid #e2e8f0; background: #fff; cursor: pointer; font-weight: 600; color: #1e293b; box-shadow: 0 1px 2px rgba(0,0,0,0.05);" onclick="buildSubjectDashboard()">
+            <div class="brand-name">Study<span>Hub</span></div>
+            <div class="sidenav">
+                <div class="snlabel">Overview</div>
+                <button class="snbtn" onclick="buildSubjectDashboard()">
                     <div style="font-size: 14px;">◈</div> Dashboard
                 </button>
             </div>
@@ -22,28 +22,24 @@
 
         <!-- Main Content Area -->
         <main class="main">
-            
-            <!-- View 1: Dashboard (Visible by default) -->
+            <!-- View 1: Dashboard -->
             <div class="page on" id="page-dash">
                 <div class="ph">
                     <h1 class="ph-title">Your progress</h1>
-                    <p class="ph-sub" style="color: #64748b; margin-top: 4px;">CFA Level II · 10 topics</p>
+                    <p class="ph-sub">CFA Level II · 10 topics</p>
                 </div>
                 <div class="tgrid" id="topics-grid"></div>
             </div>
 
-            <!-- View 2: Notes Viewer (Hidden by default) -->
+            <!-- View 2: Notes Viewer -->
             <div class="page" id="page-topic">
-                <!-- The Title will be injected dynamically by JavaScript -->
+                <button class="backbtn" onclick="buildSubjectDashboard()">← Back to Subjects</button>
                 <h1 id="t-title" style="font-size: 28px; font-weight: 800; margin-bottom: 24px; color: #1e293b;"></h1>
-                <!-- The Note Blocks will be injected here -->
                 <div id="tab-body"></div>
             </div>
-
         </main>
     </div>
 
-    <!-- Links the logic -->
     <script src="script.js"></script>
 </body>
 </html>
