@@ -16,14 +16,15 @@ body { font-family: 'Inter', sans-serif; background-color: var(--bg-main); color
 .brand-name { font-size: 22px; font-weight: 800; margin-bottom: 30px; }
 .brand-name span { color: var(--accent-emerald); }
 
-.main { padding: 40px; max-width: 1400px; }
+.main { padding: 40px; max-width: 1400px; width: 100%; }
 .ph-title { font-size: 28px; font-weight: 800; margin-bottom: 8px; }
 
-/* Grid for smaller card width */
+/* Grid: Smaller horizontal width */
 .tgrid { 
     display: grid; 
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); 
     gap: 16px; 
+    align-items: stretch;
 }
 
 .tcard { 
@@ -37,8 +38,11 @@ body { font-family: 'Inter', sans-serif; background-color: var(--bg-main); color
     border: none; font-size: 12px; font-weight: 700; cursor: pointer; width: 100%; margin-top: 12px;
 }
 
-/* Note Block Styles */
+.backbtn { background: #fff; border: 1px solid var(--border-color); padding: 8px 16px; border-radius: 8px; cursor: pointer; margin-bottom: 24px; font-weight: 600; }
+
+/* Note Block Card Formatting */
 .note-block {
     background: #fff; border: 1px solid var(--border-color); border-radius: var(--radius);
     padding: 24px; margin-bottom: 20px; line-height: 1.6; white-space: pre-wrap; font-size: 14px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
 }
