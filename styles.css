@@ -8,43 +8,36 @@
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Inter', sans-serif; background-color: var(--bg-main); color: var(--text-main); overflow-x: hidden; }
+body { font-family: 'Inter', sans-serif; background-color: var(--bg-main); color: var(--text-main); }
 
-.shell { display: grid; grid-template-columns: 220px 1fr; min-height: 100vh; }
-
+/* Layout */
+.shell { display: grid; grid-template-columns: 240px 1fr; min-height: 100vh; }
 .sidebar { background: #fff; border-right: 1px solid var(--border-color); padding: 32px 20px; position: sticky; top: 0; height: 100vh; }
-.brand-name { font-size: 20px; font-weight: 800; margin-bottom: 30px; }
+.brand-name { font-size: 22px; font-weight: 800; margin-bottom: 30px; }
 .brand-name span { color: var(--accent-emerald); }
 
-.main { padding: 40px; max-width: 1200px; width: 100%; }
-.ph-title { font-size: 26px; font-weight: 800; margin-bottom: 6px; }
+/* Sidebar Buttons */
+.snlabel { font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 12px; letter-spacing: 0.5px; }
+.snbtn { width: 100%; display: flex; align-items: center; gap: 10px; padding: 12px; border-radius: 8px; border: 1px solid var(--border-color); background: #fff; cursor: pointer; font-weight: 600; color: var(--text-main); }
+.snbtn:hover { border-color: var(--accent-emerald); color: var(--accent-emerald); }
 
-/* Grid: Compact horizontal width */
-.tgrid { 
-    display: grid; 
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); 
-    gap: 16px; 
-    align-items: stretch;
-}
+/* Main Content Area */
+.main { padding: 40px; max-width: 1400px; width: 100%; }
+.ph-title { font-size: 28px; font-weight: 800; margin-bottom: 8px; }
+.ph-sub { color: var(--text-muted); margin-bottom: 32px; }
 
-.tcard { 
-    background: #fff; border: 1px solid var(--border-color); border-radius: var(--radius); 
-    padding: 18px; transition: 0.2s; display: flex; flex-direction: column; justify-content: space-between;
-}
+/* Grid & Cards */
+.tgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; align-items: stretch; }
+.tcard { background: #fff; border: 1px solid var(--border-color); border-radius: var(--radius); padding: 20px; transition: 0.2s; display: flex; flex-direction: column; justify-content: space-between; }
 .tcard:hover { border-color: var(--accent-emerald); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
 
-.pill-g { 
-    background: var(--accent-emerald); color: #fff; padding: 10px; border-radius: 8px; 
-    border: none; font-size: 11px; font-weight: 700; cursor: pointer; width: 100%; margin-top: 12px;
-}
+/* Interaction Elements */
+.pill-g { background: var(--accent-emerald); color: #fff; padding: 10px; border-radius: 8px; border: none; font-size: 12px; font-weight: 700; cursor: pointer; width: 100%; margin-top: 12px; }
+.backbtn { background: #fff; border: 1px solid var(--border-color); padding: 8px 16px; border-radius: 8px; cursor: pointer; margin-bottom: 24px; font-weight: 600; }
 
+/* Critical: Page Toggling */
 .page { display: none; }
-.page.on { display: block; } /* Strict visibility control */
+.page.on { display: block; }
 
-.backbtn { background: #fff; border: 1px solid var(--border-color); padding: 8px 16px; border-radius: 8px; cursor: pointer; margin-bottom: 24px; font-weight: 600; font-size: 12px; }
-
-.note-block {
-    background: #fff; border: 1px solid var(--border-color); border-radius: var(--radius);
-    padding: 24px; margin-bottom: 16px; line-height: 1.6; white-space: pre-wrap; font-size: 14px;
-    max-width: 800px; /* Limits note width for readability */
-}
+/* Note Blocks */
+.note-block { background: #fff; border: 1px solid var(--border-color); border-radius: var(--radius); padding: 24px; margin-bottom: 20px; line-height: 1.6; white-space: pre-wrap; font-size: 14px; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
